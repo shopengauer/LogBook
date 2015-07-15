@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2737211666">
+    <data-source source="LOCAL" name="HSQLDB - logbookdb" uuid="0ab2ff41-b968-4245-8cbe-695622098218">
+      <driver-ref>hsqldb.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:$PROJECT_DIR$/logbookdata/logbookdb</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
