@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -29,6 +30,9 @@ public class FXMLMainController {
 
     @FXML
     private Button submitButton;
+
+    @FXML
+    private Label loginLabel;
 
     @FXML
     private AnchorPane view;
@@ -59,10 +63,10 @@ public class FXMLMainController {
                 try {
                     authToken = authenticationManager.authenticate(authToken);
                     SecurityContextHolder.getContext().setAuthentication(authToken);
-                    System.out.println("Auth OK");
+                    loginLabel.setText("Auth OK");
                 } catch (AuthenticationException e) {
-                    System.out.println("Login failure, please try again:");
-
+                   // System.out.println("Login failure, please try again:");
+                    loginLabel.setText("Login failure, please try again:");
                     return;
                 }
                //root stage.close();
