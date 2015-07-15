@@ -5,10 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import ru.matritca.logbook.security.SecurityConfiguration;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +28,20 @@ public class FXMLMainController {
     private Stage stage;
 
     @FXML
-    private Button btn;
+    private Button submitButton;
+
+    @FXML
+    private AnchorPane view;
+
+    @FXML
+    private TextField usernameTextField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
 
     @PostConstruct
     public void init(){
@@ -33,19 +52,27 @@ public class FXMLMainController {
             }
         });
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                stage.close();
-                //stage.show();
+                Authentication authToken = new UsernamePasswordAuthenticationToken(usernameTextField.getText(), passwordField.getText());
+                try {
+                    authToken = authenticationManager.authenticate(authToken);
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                    System.out.println("Auth OK");
+                } catch (AuthenticationException e) {
+                    System.out.println("Login failure, please try again:");
+
+                    return;
+                }
+               //root stage.close();
             }
         });
 
     }
 
 
-    @FXML
-    private AnchorPane view;
+
 
 
     public AnchorPane getView() {
@@ -59,5 +86,13 @@ public class FXMLMainController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public TextField getUsernameTextField() {
+        return usernameTextField;
+    }
+
+    public PasswordField getPasswordField() {
+        return passwordField;
     }
 }
