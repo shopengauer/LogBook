@@ -31,6 +31,7 @@ public class DatasourceConfig {
     public DataSource dataSource(){
         BasicDataSource ds = new BasicDataSource();
         ds.setUrl("jdbc:h2:file:C:\\Users\\Василий\\IdeaProjects\\LogBook\\h2data/h2logbook");
+        //ds.setUrl("jdbc:h2:file:C:\\Users\\Василий\\IdeaProjects\\LogBook\\h2data/h2logbook");
         ds.setDriverClassName("org.h2.Driver");
       //  ds.setUsername("sa");
 //        ds.setPassword("");
