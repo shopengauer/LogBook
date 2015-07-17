@@ -16,6 +16,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import ru.matritca.logbook.domain.Test;
+import ru.matritca.logbook.repository.TestRepository;
 import ru.matritca.logbook.security.SecurityConfiguration;
 
 import javax.annotation.PostConstruct;
@@ -45,10 +47,16 @@ public class FXMLMainController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private TestRepository testRepository;
 
 
     @PostConstruct
     public void init(){
+        Test test = new Test();
+        test.setUser("Wasiliy");
+        testRepository.save(test);
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -59,6 +67,7 @@ public class FXMLMainController {
         submitButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 Authentication authToken = new UsernamePasswordAuthenticationToken(usernameTextField.getText(), passwordField.getText());
                 try {
                     authToken = authenticationManager.authenticate(authToken);
@@ -66,10 +75,11 @@ public class FXMLMainController {
                     loginLabel.setText("Auth OK");
                 } catch (AuthenticationException e) {
                    // System.out.println("Login failure, please try again:");
-                    loginLabel.setText("Login failure, please try again:");
+                  loginLabel.setText("Login failure, please try again:");
+
                     return;
                 }
-               //root stage.close();
+
             }
         });
 

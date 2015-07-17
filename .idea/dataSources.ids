@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="HSQLDB - logbookdb" uuid="0ab2ff41-b968-4245-8cbe-695622098218">
-    <database-info product="HSQL Database Engine" version="2.3.2" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.2">
+  <data-source name="H2 - h2emb" uuid="d1e3f07c-b851-4f8f-ab02-92c373e946a5">
+    <database-info product="H2" version="1.3.176 (2014-04-05)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.3.176 (2014-04-05)">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
-    <schema name="PUBLIC" catalog="PUBLIC"/>
-    <table name="USERS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
-      <column name="USERNAME" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="PASSWORD" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+    <schema name="PUBLIC" catalog="H2EMB"/>
+    <table name="LOGBOOK_USER" schema="PUBLIC" catalog="H2EMB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOTk3MjM4RjlfRjMxN180NTZCX0IwQjBfQkRENTYyMUVDOTQwKQ==" autoIncrement="true"/>
+      <column name="LOGBOOK_USER_ROLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USERNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_1" columns="ID"/>
+    </table>
+    <table name="TEST" schema="PUBLIC" catalog="H2EMB" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRDQ2NTAzNkNfMkRDRV80QTdGX0JEMzVfOTE4MjdDMkNCMEJDKQ==" autoIncrement="true"/>
+      <column name="USER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_2" columns="ID"/>
+    </table>
+  </data-source>
+  <data-source name="H2 - h2logbook" uuid="6e1568e6-88cc-4b94-9b8f-47643e3992dc">
+    <database-info product="H2" version="1.3.176 (2014-04-05)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.3.176 (2014-04-05)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="H2LOGBOOK"/>
+    <table name="LOGBOOK_USER" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRUExRTEzMjdfNzYyQ180QzREX0I5OEZfQ0I0QkQyRkFEODg2KQ==" autoIncrement="true"/>
+      <column name="LOGBOOK_USER_ROLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USERNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_1" columns="ID"/>
+    </table>
+    <table name="TEST" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfQ0ZDMzU0RjBfRkI2MV80REFDX0I3MTZfMjQwMEJENEQzN0VEKQ==" autoIncrement="true"/>
+      <column name="USER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_2" columns="ID"/>
     </table>
   </data-source>
 </component>
