@@ -1,21 +1,26 @@
-package ru.matritca.logbook.datasource;
+package ru.matritca.logbook.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManagerFactory;
+//import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 /**
  * Created by Vasiliy on 16.07.2015.
  */
 @Configuration
+@EnableJpaRepositories(basePackages = "ru.matritca.logbook.repository")
+@EnableTransactionManagement
 public class DatasourceConfig {
 
 //    @Bean
@@ -57,6 +62,14 @@ public class DatasourceConfig {
         factoryBean.setDataSource(dataSource());
         factoryBean.setPackagesToScan("ru.matritca.logbook.domain");
         return factoryBean;
+    }
+
+
+    @Bean
+    public PlatformTransactionManager transactionManager(){
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return txManager;
     }
 
 

@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "ru.matritca.logbook.*")
-@EnableJpaRepositories(basePackages = "ru.matritca.logbook.repository")
+
 public class LogBookApplication extends AbstractJavaFxApplicationSupport{
 
     @Autowired

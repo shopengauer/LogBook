@@ -38,7 +38,7 @@ public enum LogBookUserRole {
     }
 
 
-    public static LogBookUserRole getBaudrateByLabel(String label){
+    public static LogBookUserRole getLogBookUserRoleByLabel(String label){
         LogBookUserRole[] values = LogBookUserRole.values();
         for (LogBookUserRole s : values) {
             if(label.equals(s.getLabel())){
