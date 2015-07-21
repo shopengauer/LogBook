@@ -48,7 +48,7 @@ public class DatasourceConfig {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter =
                 new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setDatabase(Database.H2);
-        hibernateJpaVendorAdapter.setGenerateDdl(true);
+        hibernateJpaVendorAdapter.setGenerateDdl(false);
         hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
         return hibernateJpaVendorAdapter;
     }

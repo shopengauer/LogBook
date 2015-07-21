@@ -8,34 +8,58 @@
     <schema name="PUBLIC" catalog="H2LOGBOOK"/>
     <schema name="TEST_SCHEMA" catalog="H2LOGBOOK"/>
     <schema name="USERS" catalog="H2LOGBOOK"/>
-    <table name="COMMISSIONINGAAS" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
+    <table name="COMMISSIONING_AAS" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
       <column name="COMMISSIONING_AAS_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="INSERT_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
+      <column name="UPDATE_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="AAS_DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AAS_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="END_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
       <column name="START_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
       <column name="CONCLUSION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ОРГАНИЗАЦИЯЗАКАЗЧИК" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ОСОБЫЕОТМЕТКИОПРИЕМКЕ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ПОДПИСЬОПРИЕМКЕПРЕДСЕДАТЕЛЯПРИЕМОЧННОЙКОМИССИИ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="УСЛОВНОЕНАЗВАНИЕСИСТЕМЫ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="CONSTRAINT_1" columns="COMMISSIONING_AAS_ID"/>
-      <exported-key name="FK_7OVV69T7JTK1BFR5BAOWQAGKM" table="COMMISSION_MEMBERS" schema="PUBLIC" catalog="H2LOGBOOK" columns="COMMISSIONINGAAS_COMMISSIONING_AAS_ID"/>
+      <column name="CUSTOMER_ORGANIZATION" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DEVELOPER_ORGANIZATION" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DIGITALSIGNOFTHECHIEF" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_2" columns="COMMISSIONING_AAS_ID"/>
+      <exported-key name="FK_PDP65HVNFOCCDHFNV7FLXT508" table="COMMISSION_MEMBERS" schema="PUBLIC" catalog="H2LOGBOOK" columns="COMMISSIONING_AAS_COMMISSIONING_AAS_ID"/>
+      <exported-key name="FK_8JVU9G2QNQ6UHYUVUGMDEMT0I" table="VERIFICATION_AAS" schema="PUBLIC" catalog="H2LOGBOOK" columns="FK_COMMISSIONING_AAS_ID"/>
+      <index name="UK_8N78KO83T526CKPCHR6EBXSK1_INDEX_2" unique="true" columns="AAS_NAME"/>
     </table>
     <table name="COMMISSION_MEMBERS" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
-      <column name="COMMISSIONINGAAS_COMMISSIONING_AAS_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="COMMISSIONMEMBERNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMMISSIONING_AAS_COMMISSIONING_AAS_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="COMISSION_MEMBER_NAME" sqlType="VARCHAR" precision="256" scale="0" nullable="false" jdbcType="12"/>
       <column name="DIGITALSIGN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="JOBTITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ORZANIZATION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <foreign-key name="FK_7OVV69T7JTK1BFR5BAOWQAGKM" columns="COMMISSIONINGAAS_COMMISSIONING_AAS_ID" ref-table="COMMISSIONINGAAS" ref-schema="PUBLIC" ref-catalog="H2LOGBOOK" ref-columns="COMMISSIONING_AAS_ID" update-rule="1" delete-rule="1" deferrability="2"/>
-      <index name="FK_7OVV69T7JTK1BFR5BAOWQAGKM_INDEX_6" unique="false" columns="COMMISSIONINGAAS_COMMISSIONING_AAS_ID"/>
+      <column name="JOBTITLE" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ORGANIZATION" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <foreign-key name="FK_PDP65HVNFOCCDHFNV7FLXT508" columns="COMMISSIONING_AAS_COMMISSIONING_AAS_ID" ref-table="COMMISSIONING_AAS" ref-schema="PUBLIC" ref-catalog="H2LOGBOOK" ref-columns="COMMISSIONING_AAS_ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="UK_TD3NNGA61P8UNPVQWJK7EMFWG_INDEX_6" unique="true" columns="COMISSION_MEMBER_NAME"/>
+      <index name="FK_PDP65HVNFOCCDHFNV7FLXT508_INDEX_6" unique="false" columns="COMMISSIONING_AAS_COMMISSIONING_AAS_ID"/>
     </table>
     <table name="TEST" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
-      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfRjZBNTYzM0JfOUE4RV80NzVDX0E1RTRfMjQ4Q0REMTcyREYxKQ==" autoIncrement="true"/>
+      <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFBVQkxJQy5TWVNURU1fU0VRVUVOQ0VfOThFRDFBNDRfRjAwN180M0MxX0E2N0VfMDY2MUU0OEI1MENBKQ==" autoIncrement="true"/>
       <column name="USER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="CONSTRAINT_2" columns="ID"/>
+      <primary-key name="CONSTRAINT_27" columns="ID"/>
+    </table>
+    <table name="VERIFICATION_AAS" schema="PUBLIC" catalog="H2LOGBOOK" type="TABLE">
+      <column name="VERIFICATION_AAS_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="INSERT_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
+      <column name="UPDATE_TIME" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="CURRENT_VERIFICATION_DATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
+      <column name="NEXT_VERIFICATION_DATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="false" jdbcType="93"/>
+      <column name="VERIFICATION_DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERIFICATIONMEMBERDIGITALSIGN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERIFICATION_MEMBER_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VERIFICATION_TYPE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FK_COMMISSIONING_AAS_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="FK_LOGBOOK_USER_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="CONSTRAINT_3" columns="VERIFICATION_AAS_ID"/>
+      <foreign-key name="FK_8JVU9G2QNQ6UHYUVUGMDEMT0I" columns="FK_COMMISSIONING_AAS_ID" ref-table="COMMISSIONING_AAS" ref-schema="PUBLIC" ref-catalog="H2LOGBOOK" ref-columns="COMMISSIONING_AAS_ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <foreign-key name="FK_1M6O7IHWEXB7R917QP2IWSOLX" columns="FK_LOGBOOK_USER_ID" ref-table="LOGBOOK_USER" ref-schema="USERS" ref-catalog="H2LOGBOOK" ref-columns="LOGBOOK_USER_ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK_1M6O7IHWEXB7R917QP2IWSOLX_INDEX_3" unique="false" columns="FK_LOGBOOK_USER_ID"/>
+      <index name="FK_8JVU9G2QNQ6UHYUVUGMDEMT0I_INDEX_3" unique="false" columns="FK_COMMISSIONING_AAS_ID"/>
     </table>
     <table name="DEPARTMENT" schema="USERS" catalog="H2LOGBOOK" type="TABLE">
-      <column name="DEPARTMENT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFVTRVJTLlNZU1RFTV9TRVFVRU5DRV9BREYyQkQyNl8xN0M4XzQ3QURfOThERF9ERUIxRjlDQjk0NzIp" autoIncrement="true"/>
+      <column name="DEPARTMENT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFVTRVJTLlNZU1RFTV9TRVFVRU5DRV9GMzdBNUYwQV8yRDQ1XzRBMEZfQjBGN18zMTY2MkU3RDVFNzUp" autoIncrement="true"/>
       <column name="DEPARTMENTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="CONSTRAINT_4" columns="DEPARTMENT_ID"/>
@@ -49,7 +73,8 @@
       <exported-key name="FK_B2DAVPTI2ODECMUR79MIQEKDC" table="LOGBOOK_USER" schema="USERS" catalog="H2LOGBOOK" columns="FK_JOBTITLE_ID"/>
     </table>
     <table name="LOGBOOK_USER" schema="USERS" catalog="H2LOGBOOK" type="TABLE">
-      <column name="LOGBOOK_USER_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" def="KE5FWFQgVkFMVUUgRk9SIFVTRVJTLlNZU1RFTV9TRVFVRU5DRV8yRDUzNUM1NF8wODA4XzQ3QzlfODQ5QV9CRDdGRENEMjZCMzAp" autoIncrement="true"/>
+      <column name="LOGBOOK_USER_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="USER_CERTIFICATE" sqlType="BLOB" precision="2147483647" scale="0" nullable="true" jdbcType="2004"/>
       <column name="FIRSTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LASTNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LOGBOOK_USER_ROLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -60,6 +85,7 @@
       <primary-key name="CONSTRAINT_1" columns="LOGBOOK_USER_ID"/>
       <foreign-key name="FK_FQBTQQ4X1CCPGV2Y5C2KCWPOV" columns="FK_DEPARTMENT_ID" ref-table="DEPARTMENT" ref-schema="USERS" ref-catalog="H2LOGBOOK" ref-columns="DEPARTMENT_ID" update-rule="1" delete-rule="1" deferrability="2"/>
       <foreign-key name="FK_B2DAVPTI2ODECMUR79MIQEKDC" columns="FK_JOBTITLE_ID" ref-table="JOBTITLE" ref-schema="USERS" ref-catalog="H2LOGBOOK" ref-columns="JOBTITLE_ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <exported-key name="FK_1M6O7IHWEXB7R917QP2IWSOLX" table="VERIFICATION_AAS" schema="PUBLIC" catalog="H2LOGBOOK" columns="FK_LOGBOOK_USER_ID"/>
       <index name="FK_B2DAVPTI2ODECMUR79MIQEKDC_INDEX_1" unique="false" columns="FK_JOBTITLE_ID"/>
       <index name="FK_FQBTQQ4X1CCPGV2Y5C2KCWPOV_INDEX_1" unique="false" columns="FK_DEPARTMENT_ID"/>
     </table>

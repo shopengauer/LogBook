@@ -5,9 +5,11 @@ package ru.matritca.logbook.fx.fxmlconfigs;
 import javafx.fxml.FXMLLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import ru.matritca.logbook.fx.fxmlcontrollers.FXMLMainController;
 
 import java.io.IOException;
@@ -22,11 +24,19 @@ public class FXMLControllersConfig {
     private Logger logger = LoggerFactory.getLogger(FXMLMainController.class);
 
     @Bean
-    @Qualifier(value = "fxmlMain")
+    @Profile("QA")
     public FXMLMainController fxmlController() throws IOException {
         System.out.println("Load controller");
         return (FXMLMainController) loadController("/fxmlschemas/FXMLMainSchema.fxml");
     }
+
+//    @Bean
+//    @Profile(value = "Test")
+//    public FXMLMainController fxmlTestController() throws IOException {
+//        System.out.println("Load controller");
+//        return null;
+//    }
+
 
 //
 

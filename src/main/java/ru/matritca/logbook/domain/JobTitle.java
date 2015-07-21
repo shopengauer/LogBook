@@ -19,4 +19,28 @@ public class JobTitle implements Serializable{
 
     private String jobTitleName;
     private String jobTitledescription;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getJobTitleName() {
+        return jobTitleName;
+    }
+
+    public void setJobTitleName(String jobTitleName) {
+        this.jobTitleName = jobTitleName;
+    }
+
+    public String getJobTitledescription() {
+        return jobTitledescription;
+    }
+
+    public void setJobTitledescription(String jobTitledescription) {
+        this.jobTitledescription = jobTitledescription;
+    }
 }

@@ -1,6 +1,9 @@
 package ru.matritca.logbook.domain;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import java.security.cert.Certificate;
 
 /**
  * Created by Vasiliy on 26.06.2015.
@@ -10,9 +13,10 @@ import javax.persistence.*;
 public class LogBookUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "LOGBOOK_USER_ID",nullable = false,unique = true)
     @Basic(optional = false)
+    @SequenceGenerator(name = "LOG_GENERATOR")
+    @GeneratedValue(generator = "LOG_GENERATOR",strategy = GenerationType.SEQUENCE)
+    @Column(name = "LOGBOOK_USER_ID",nullable = false,unique = true)
     private long id;
 
     private String username;
@@ -29,11 +33,16 @@ public class LogBookUser {
     @JoinColumn(name = "FK_JOBTITLE_ID",referencedColumnName = "JOBTITLE_ID")
     private JobTitle jobTitle;
 
-
-
     @Enumerated(EnumType.STRING)
     @Column(name = "LOGBOOK_USER_ROLE")
     private LogBookUserRole logBookUserRole;
+
+
+    @Lob
+    @Length
+    @Column(name = "USER_CERTIFICATE")
+    private byte[] certificateEncode;
+
 
 
 
@@ -68,4 +77,6 @@ public class LogBookUser {
     public void setLogBookUserRole(LogBookUserRole logBookUserRole) {
         this.logBookUserRole = logBookUserRole;
     }
+
+
 }
