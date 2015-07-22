@@ -2,6 +2,7 @@ package ru.matritca.logbook.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Component;
  * Created by Vasiliy on 26.06.2015.
  */
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("in_memory_security")
+public class InMemorySecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override

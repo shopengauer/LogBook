@@ -16,9 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import ru.matritca.logbook.domain.Test;
 import ru.matritca.logbook.repository.TestRepository;
-import ru.matritca.logbook.security.SecurityConfiguration;
 
 import javax.annotation.PostConstruct;
 
@@ -53,9 +51,9 @@ public class FXMLMainController {
 
     @PostConstruct
     public void init(){
-        Test test = new Test();
-        test.setUser("Wasiliy");
-        testRepository.save(test);
+//        Test test = new Test();
+//        test.setUser("Wasiliy");
+//        testRepository.save(test);
 
         Platform.runLater(new Runnable() {
             @Override

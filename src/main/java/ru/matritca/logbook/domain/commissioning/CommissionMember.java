@@ -1,7 +1,5 @@
 package ru.matritca.logbook.domain.commissioning;
 
-import ru.matritca.logbook.domain.JobTitle;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

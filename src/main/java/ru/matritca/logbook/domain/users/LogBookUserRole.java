@@ -1,4 +1,4 @@
-package ru.matritca.logbook.domain;
+package ru.matritca.logbook.domain.users;
 
 /**
  * Created by Vasiliy on 26.06.2015.

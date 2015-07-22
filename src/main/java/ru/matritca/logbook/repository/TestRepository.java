@@ -2,8 +2,6 @@ package ru.matritca.logbook.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
-import org.springframework.transaction.annotation.Transactional;
-import ru.matritca.logbook.domain.LogBookUser;
 import ru.matritca.logbook.domain.Test;
 
 import javax.persistence.LockModeType;

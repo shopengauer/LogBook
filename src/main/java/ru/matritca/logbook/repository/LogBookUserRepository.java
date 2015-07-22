@@ -1,7 +1,7 @@
 package ru.matritca.logbook.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.matritca.logbook.domain.LogBookUser;
+import ru.matritca.logbook.domain.users.LogBookUser;
 
 import java.util.Optional;
 
@@ -10,6 +10,6 @@ import java.util.Optional;
  */
 public interface LogBookUserRepository extends JpaRepository<LogBookUser,Long> {
 
-    Optional<LogBookUser> findMdbUserByUsername(String username);
+    Optional<LogBookUser> findUserByUsername(String username);
 
 }

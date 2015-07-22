@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import ru.matritca.logbook.domain.LogBookUser;
+import ru.matritca.logbook.domain.users.LogBookUser;
 import ru.matritca.logbook.repository.LogBookUserRepository;
 
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class LogBookUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-       Optional<LogBookUser> optLogBookUser = logBookUserRepository.findMdbUserByUsername(userName);
+       Optional<LogBookUser> optLogBookUser = logBookUserRepository.findUserByUsername(userName);
 
        LogBookUser logBookUser = optLogBookUser.orElseThrow(new Supplier<UsernameNotFoundException>() {
             @Override

@@ -1,6 +1,6 @@
 package ru.matritca.logbook.domain.verification;
 
-import ru.matritca.logbook.domain.LogBookUser;
+import ru.matritca.logbook.domain.users.LogBookUser;
 import ru.matritca.logbook.domain.Time;
 import ru.matritca.logbook.domain.commissioning.CommissioningAAS;
 

@@ -10,14 +10,16 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.matritca.logbook.LogBookApplication;
-import ru.matritca.logbook.domain.LogBookUser;
+import ru.matritca.logbook.domain.users.LogBookUser;
 import ru.matritca.logbook.domain.commissioning.Commission;
 import ru.matritca.logbook.domain.commissioning.CommissionMember;
 import ru.matritca.logbook.domain.commissioning.CommissioningAAS;
 import ru.matritca.logbook.repository.commissioning.CommissioningAasRepository;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -67,15 +69,19 @@ public class CommisionningAasRepositoryTests {
         commissioningAAS1.setInsertTime(new Date());
         commissioningAAS1.setLogBookUser(new LogBookUser());
 
+        commissioningAASList.add(commissioningAAS1);
+
+
 
     }
 
     @Test
-    @Transactional(Transactional.TxType.REQUIRED)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void createCommissioningAAS(){
 
 
     }
+
     @After
     public void tearDown() throws Exception {
 
