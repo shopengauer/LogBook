@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * Created by Vasiliy on 26.06.2015.
  */
 @Configuration
-@Profile("in_memory_security")
+//@Profile("in_memory_security")
 public class InMemorySecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
