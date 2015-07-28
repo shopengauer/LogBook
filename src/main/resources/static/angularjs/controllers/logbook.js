@@ -8,32 +8,42 @@ var mainModule = angular.module("LogBookApp",["ngRoute"]);
 mainModule.config(function($routeProvider,$locationProvider){
 
     //$locationProvider.html5Mode(true);
+    //$routeProvider.when("/",{
+    //    templateUrl: "userView.html",
+    //    controller: "userCtrl",
+    //    roles: "ROLE_ADMIN"
+    //});
+
 
     $routeProvider.when("/",{
         templateUrl: "editorView.html",
-        controller: "mainLogBookCtrl"
+        controller: "personCtrl"
     });
 
       $routeProvider.when("/person",{
-        templateUrl: "personEdit.html",
+        templateUrl: "userView.html",
           controller: "mainLogBookCtrl"
     });
-
-    $routeProvider.when("/edit",{
-        templateUrl: "editorView.html",
-        controller: "mainLogBookCtrl"
-    });
+    //
+    //$routeProvider.when("/edit",{
+    //    templateUrl: "editorView.html",
+    //    controller: "adminCtrl"
+    //});
 
 
 }).controller("mainLogBookCtrl",function($scope,$http,$location){
 
-      $scope.setView = function(view){
+    $scope.setView = function(view){
 
-          $location.path(view);
-      }
+        $location.path(view);
+    }
 
+    $scope.hidePanel = function(){
 
+       // var i = $scope.viewFlag;
+        $scope.viewFlag = !$scope.viewFlag;
+    }
 
-   })
+  })
 
 

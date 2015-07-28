@@ -1,0 +1,13 @@
+<div ng-controller="personCtrl" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <button ng-click="setScope()">Set scope</button>
+<div sec:authorize="hasRole('ROLE_ADMIN')" >
+    {{message1}}
+    Page Admin
+</div>
+
+<div sec:authorize="hasRole('ROLE_USER')">
+    {{message1}}
+    Page User
+    <!--<ng-view ></ng-view>-->
+</div>
+</div>

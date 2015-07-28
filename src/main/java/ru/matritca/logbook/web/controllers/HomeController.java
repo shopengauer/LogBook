@@ -23,6 +23,12 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    public String page(Model model){
+
+        return "pagePerson";
+    }
+
 //    @RequestMapping(value = "/login",method = RequestMethod.GET)
 //    public String home(Model model){
 //        model.addAttribute("model","Thymeleaf");
