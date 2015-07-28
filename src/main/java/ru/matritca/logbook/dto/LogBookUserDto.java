@@ -11,7 +11,7 @@ public class LogBookUserDto {
     private String password;
     private String passwordRepeated;
 
-    private List<>
+    //private List<>
 
 
 }

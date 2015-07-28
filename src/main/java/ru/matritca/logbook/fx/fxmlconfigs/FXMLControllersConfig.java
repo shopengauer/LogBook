@@ -24,7 +24,7 @@ public class FXMLControllersConfig {
     private Logger logger = LoggerFactory.getLogger(FXMLMainController.class);
 
     @Bean
-    @Profile("QA")
+   //@Profile("QA")
     public FXMLMainController fxmlController() throws IOException {
         System.out.println("Load controller");
         return (FXMLMainController) loadController("/fxmlschemas/FXMLMainSchema.fxml");

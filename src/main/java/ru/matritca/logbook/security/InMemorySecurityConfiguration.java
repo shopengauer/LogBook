@@ -7,8 +7,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +28,24 @@ public class InMemorySecurityConfiguration extends WebSecurityConfigurerAdapter 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("root").password("root").roles("Admin");
+        auth.inMemoryAuthentication().withUser("root").password("root").roles("ADMIN")
+        .and()
+        .withUser("user").password("user").roles("USER");
+
+
     }
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+       http.authorizeRequests()
+               .antMatchers("/").authenticated()
+               .and()
+               .formLogin().loginPage("/login")
+               .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+               .and().rememberMe().tokenValiditySeconds(3600).key("matrixKey")
+               .and()
+               .httpBasic()
+               .realmName("Matrix");;
+
+    }
 }
