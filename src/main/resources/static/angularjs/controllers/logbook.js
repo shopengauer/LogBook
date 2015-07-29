@@ -15,10 +15,10 @@ mainModule.config(function($routeProvider,$locationProvider){
     //});
 
 
-    $routeProvider.when("/",{
-        templateUrl: "editorView.html",
-        controller: "personCtrl"
-    });
+    //$routeProvider.when("/",{
+    //    templateUrl: "editorView.html",
+    //    controller: "personCtrl"
+    //});
 
       $routeProvider.when("/person",{
         templateUrl: "userView.html",

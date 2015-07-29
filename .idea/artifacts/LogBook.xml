@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="LogBook">
+    <output-path>$PROJECT_DIR$/out/artifacts/LogBook</output-path>
+    <root id="root">
+      <element id="archive" name="LogBook.jar">
+        <element id="module-output" name="LogBook" />
+      </element>
+      <element id="artifact" artifact-name="LogBook:jar" />
+    </root>
+  </artifact>
+</component>
