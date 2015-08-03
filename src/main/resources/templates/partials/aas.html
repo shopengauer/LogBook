@@ -1,0 +1,109 @@
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>-->
+
+<div class="container-fluid" ng-controller="aasCtrl" xmlns:th="http://www.thymeleaf.org">
+    <h1>Активные системы</h1>
+
+
+
+    <div class="row">
+        <div class="col-md-12 col-md-offset-0">
+            <table class = "table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Организация заказчик</th>
+                    <th>Организация разработчик</th>
+
+                    <th>Название системы</th>
+                    <th>Описание</th>
+                    <th>Коммисия</th>
+                    <th>Работник сделавший запись</th>
+                    <th>ЭЦП работника</th>
+                    <th>Дата записи</th>
+
+                    <!--<th>Salary</th>-->
+                    <!--<th>Check</th>-->
+                    <!--<th>Edit</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if = "aas == null"><td>Нет активных систем</td></tr>
+                <tr ng-class = "{selectedId: checkedArray[$index],edit : isEditArray[$index]}" ng-repeat='aa in aas'>
+                    <td ng-bind='aa.id'>Kukusa</td>
+                    <td ng-bind='aa.customer'></td>
+                    <td ng-bind='aa.developer'></td>
+                    <td ng-bind='aa.aasName'></td>
+                    <td ng-bind='aa.desc'></td>
+                    <td><a ng-href="commision/{{aa.id}}">Члены комиссии</a></td>
+                    <td><a ng-bind='aa.employee.username' ng-href="employee/{{aa.employee.id}}"></a></td>
+                    <td>Запись корректна</td>
+                    <td>{{date}}</td>
+                    <!--<td>-->
+                        <!--<div class="container-fluid">-->
+                            <!--&lt;!&ndash;<div class="btn-group" role="group">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-default" ng-hide="isEditArray[$index]"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;ng-click="editToggle($index)">Edit&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-default" ng-hide="isEditArray[$index]"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;ng-click=" ">Delete&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+                            <!--&lt;!&ndash;<div class="btn-group" role="group">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-primary" ng-show="isEditArray[$index]" ng-click="">Ok&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<button class="btn btn-primary" ng-show="isEditArray[$index]"&ndash;&gt;-->
+                                        <!--&lt;!&ndash;ng-click="editCancel($index)">Cancel&ndash;&gt;-->
+                                <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--</div>-->
+                    <!--</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class = "col-md-1">
+            <!--<button class ="btn btn-primary" ng-click="">Добавить систему</button>-->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addAas">
+                Добавить систему
+            </button>
+        </div>
+
+        <div class = "col-md-2">
+        <!--<button class ="btn btn-primary" ng-click="deleteEmployee()">Delete employee</button>-->
+       </div>
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="addAas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Параметры системы</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class = "container">
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Выйти</button>
+                        <button type="button" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

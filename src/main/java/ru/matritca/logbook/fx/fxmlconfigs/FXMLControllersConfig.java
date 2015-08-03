@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import ru.matritca.logbook.fx.fxmlcontrollers.FXMLAppController;
 import ru.matritca.logbook.fx.fxmlcontrollers.FXMLMainController;
 
 import java.io.IOException;
@@ -24,21 +25,14 @@ public class FXMLControllersConfig {
     private Logger logger = LoggerFactory.getLogger(FXMLMainController.class);
 
     @Bean
-   //@Profile("QA")
     public FXMLMainController fxmlController() throws IOException {
-        System.out.println("Load controller");
         return (FXMLMainController) loadController("/fxmlschemas/FXMLMainSchema.fxml");
     }
 
-//    @Bean
-//    @Profile(value = "Test")
-//    public FXMLMainController fxmlTestController() throws IOException {
-//        System.out.println("Load controller");
-//        return null;
-//    }
-
-
-//
+    @Bean
+    public FXMLAppController fxmlAppController() throws IOException {
+        return (FXMLAppController) loadController("/fxmlschemas/FXMLAppSchema.fxml");
+    }
 
     protected Object loadController(String url) throws IOException {
         try

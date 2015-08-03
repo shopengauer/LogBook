@@ -29,23 +29,23 @@ import java.util.List;
 public class LogBookApplicationTests {
 
 
-	@Autowired
-	private TestRepository testRepository;
-
-	@Qualifier("commissioningAasRepository")
-	@Autowired
-	private CommissioningAasRepository commissioningAasRepository;
-
-	private List<CommissioningAAS> commissioningAASList;
+//	@Autowired
+//	private TestRepository testRepository;
+//
+//	@Qualifier("commissioningAasRepository")
+//	@Autowired
+//	private CommissioningAasRepository commissioningAasRepository;
+//
+//	private List<CommissioningAAS> commissioningAASList;
 
 	@Before
 	public void initCommissioningAasObjects(){
 
-		commissioningAASList = new ArrayList<>();
+		//commissioningAASList = new ArrayList<>();
       //   CommissioningAAS commissioningAAS = new CommissioningAAS();
 	//	CommissionMember commissionMember = new CommissionMember();
 
-		Commission commission = new Commission();
+	//	Commission commission = new Commission();
 		//ReflectionTestUtils.setField(commissioningAAS,"customerOrganization","TestOrganization");
 	  //    String field = (String) ReflectionTestUtils.getField(commissioningAAS, "customerOrganization");
 	//	Assert.assertEquals("TestOrganization",field);
@@ -58,15 +58,15 @@ public class LogBookApplicationTests {
 //
 	}
 
-	@Test
-	public void contextLoads() {
-
-
-		//commissioningAasRepository.save();
-		//System.out.println(testRepository.getOne(1L).getUser());
-		System.out.println("Test");
-
-	}
+//	@Test
+//	public void contextLoads() {
+//
+//
+//		//commissioningAasRepository.save();
+//		//System.out.println(testRepository.getOne(1L).getUser());
+//		System.out.println("Test");
+//
+//	}
 
 
 

@@ -23,10 +23,10 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/page",method = RequestMethod.GET)
+    @RequestMapping(value = "/system",method = RequestMethod.GET)
     public String page(Model model){
 
-        return "pagePerson";
+        return "partials/aas";
     }
 
 //    @RequestMapping(value = "/login",method = RequestMethod.GET)

@@ -1,0 +1,119 @@
+<div ng-controller="creaSysCtrl">
+    <div class="container-flow">
+
+        <!--<div class = "row"><div class = "col-md-10 col-md-offset-3"> <h2>Приемка системы в эксплуатацию</h2>  </div></div>-->
+        <div class="row">
+
+           <!--<div class = "col-md-12 ">-->
+
+               <form role="form">
+
+                   <div class="col-md-8 col-md-offset-2 well">
+
+                       <div class="form-group">
+                           <label for="aasname">Название системы:</label>
+                           <input type="text" class="form-control" id="aasname" placeholder="Название системы"/>
+                       </div>
+
+                       <div class="form-group">
+                           <label for="customerorg">Организация заказчик:</label>
+                           <input type="text" class="form-control" id="customerorg" placeholder="Организация заказчик"/>
+                       </div>
+
+                       <div class="form-group">
+                           <label for="aasdescription">Описание системы</label>
+                           <textarea id="aasdescription" class="form-control" rows="3" placeholder="Описание системы"/>
+                       </div>
+                       <div>
+                           <h3>Члены комиссии  <button type="button" class="btn" data-toggle="modal"
+                                                     data-target="#addMember">
+                               Добавить
+                           </button></h3>
+
+
+                           <table class="table well">
+                               <thead>
+                               <tr>
+                                   <th>ФИО</th>
+                                   <th>Должность</th>
+                                   <th>Организация</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr ng-show="!commis">
+                                   <td>Список пуст</td>
+                               </tr>
+                               <tr ng-repeat="com in commis">
+                                   <td ng-bind='com.fio'></td>
+                                   <td ng-bind='com.organization'></td>
+                                   <td ng-bind='com.jobtitle'></td>
+
+                               </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                    <br> <br>
+                           <!--<div class="col-md-6 col-md-offset-3">-->
+                           <!--<button class ="btn btn-primary" ng-click="">Добавить систему</button>-->
+                               <button   type="button" class = "col-md-3 col-md-offset-9 btn btn-danger">Создать систему</button>
+                           <!--</div>-->
+
+
+                           <div class="row">
+                               <!-- Modal -->
+                               <div class="modal fade" id="addMember" tabindex="-1"
+                                    role="dialog" aria-labelledby="myModalLabel">
+                                   <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                           <div class="modal-header">
+                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                   <span aria-hidden="true">&times;</span></button>
+                                               <h4 class="modal-title" id="myModalLabel">Параметры системы</h4>
+                                           </div>
+                                           <div class="modal-body">
+
+                                               <div class="form-group">
+                                                   <label for="flname">ФИО члена комиссии:</label>
+                                                   <input ng-model="fio" type="text" class="form-control" id="flname"
+                                                          placeholder="ФИО"/>
+                                               </div>
+                                               <div class="form-group">
+                                                   <label for="organization">Организация:</label>
+                                                   <input ng-model="organization" type="text" class="form-control"
+                                                          id="organization" placeholder="Название системы">
+                                               </div>
+
+
+                                               <div class="form-group">
+                                                   <label for="jobtitle">Должность:</label>
+                                                   <input ng-model="jobtitle" type="text" class="form-control"
+                                                          id="jobtitle" placeholder="Должность">
+                                               </div>
+
+
+                                           </div>
+
+                                           <div class="modal-footer">
+                                               <button type="button" class="btn btn" data-dismiss="modal">Выйти
+                                               </button>
+                                               <button type="button" ng-click="addCommMember()" data-dismiss="modal"
+                                                       class="btn">OK
+                                               </button>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+
+                           </div>
+
+                       </div>
+
+               </form>
+
+        </div>
+        
+
+    </div>
+
+
+</div>

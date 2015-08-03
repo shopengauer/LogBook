@@ -5,7 +5,7 @@ package ru.matritca.logbook.domain.users;
  */
 public enum LogBookUserRole {
 
-    ADMIN_ROLE("Administrator",0),
+    ADMIN_ROLE("ADMINISTRATOR",0),
     USER_EDITOR("EDITOR",1),
     USER_VIWER("VIEWER",2);
 

@@ -18,19 +18,21 @@ import javax.annotation.PostConstruct;
 @ComponentScan(basePackages = "ru.matritca.logbook.*")
 public class LogBookApplication extends AbstractJavaFxApplicationSupport{
 
-    @Autowired(required = false)
+    @Autowired
     private FXMLMainController mainController;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene((Parent)mainController.getView(), 300, 200);
+        Scene scene = new Scene((Parent)mainController.getView(), 388, 262);
 
         Stage  stage = mainController.getStage();
         stage.setResizable(false);
         stage.initStyle(StageStyle.UTILITY);
         stage.setScene(scene);
-        stage.setTitle("Logbook client");
+        stage.setIconified(true);
+      //  stage.ic
+        stage.setTitle("Аккаунт");
         stage.show();
 
     }

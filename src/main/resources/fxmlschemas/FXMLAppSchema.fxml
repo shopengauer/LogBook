@@ -4,9 +4,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="appAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.matritca.logbook.fx.fxmlcontrollers.FXMLAppController">
    <children>
-      <BorderPane layoutX="183.0" layoutY="146.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane layoutX="183.0" layoutY="146.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="Система">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Система" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Сервис">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Сервис" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Администратор">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Администратор" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <items>
+                  <Label text="Имя пользователя:" />
+                  <Label fx:id="userNameLabel" />
+               </items>
+            </ToolBar>
+         </bottom></BorderPane>
    </children>
 </AnchorPane>

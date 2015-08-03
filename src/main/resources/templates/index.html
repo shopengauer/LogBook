@@ -5,13 +5,14 @@
     <meta name="author" content="VSPavlov"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Angular Material</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href = "../static/angularjs/bootstrap.css" th:href = "@{/webjars/bootstrap/3.3.4/css/bootstrap.css}"/>
     <link rel="stylesheet" href = "../static/angularjs/bootstrap-theme.css" th:href = "@{/webjars/bootstrap/3.3.4/css/bootstrap-theme.css}"/>
     <link rel="stylesheet" href = "../static/angularjs/style.css" th:href = "@{/angularjs/style.css}"/>
 
     <script src = "../static/angularjs/bootstrap.js" th:src = "@{/webjars/bootstrap/3.3.4/js/bootstrap.js}"></script>
     <script src = "../static/angularjs/dropdown.js" th:src = "@{/webjars/bootstrap/3.3.4/js/dropdown.js}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 
     <link rel="stylesheet" href = "../static/angularjs/angular-material.css"/>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css"/>
@@ -25,9 +26,9 @@
     <script src = "../static/angularjs/ngmodules/angular-resource.js" th:src = "@{/webjars/angularjs/1.3.15/angular-resource.js}"></script>
 
     <script src = "../static/angularjs/controllers/logbook.js" th:src = "@{/angularjs/controllers/logbook.js}"></script>
-    <script src = "../static/angularjs/controllers/personController.js" th:src = "@{/angularjs/controllers/personController.js}"></script>
-    <script src = "../static/angularjs/controllers/adminController.js" th:src = "@{/angularjs/controllers/adminController.js}"></script>
-    <script src = "../static/angularjs/controllers/userController.js" th:src = "@{/angularjs/controllers/userController.js}"></script>
+    <script src = "../static/angularjs/config/providerConfig.js" th:src = "@{/angularjs/config/providerConfig.js}"></script>
+    <script src = "../static/angularjs/controllers/creaSysCtrl.js" th:src = "@{/angularjs/controllers/creaSysCtrl.js}"></script>
+    <!--<script src = "../static/angularjs/controllers/userController.js" th:src = "@{/angularjs/controllers/userController.js}"></script>-->
 
 </head>
 <body >
@@ -53,10 +54,10 @@
                 <li class="active"><a href="">Link <span class="sr-only">(current)</span></a></li>
                 <li><a href="">Link</a></li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Система <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">Action</a></li>
-                        <li><a href="">Another action</a></li>
+                        <li><a ng-click ="setView('/system')" href = ''>Активные системы</a></li>
+                        <li><a ng-click ="setView('/creasys')" href="">Создать систему</a></li>
                         <li><a href="">Something else here</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="">Separated link</a></li>
@@ -65,12 +66,12 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search"/>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+            <!--<form class="navbar-form navbar-left" role="search">-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" class="form-control" placeholder="Search"/>-->
+                <!--</div>-->
+                <!--<button type="submit" class="btn btn-default">Submit</button>-->
+            <!--</form>-->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="">Link</a></li>
                 <li class="dropdown">
@@ -78,7 +79,7 @@
                     <ul class="dropdown-menu">
 
                             <li><a sec:authorize="hasRole('ROLE_ADMIN')" href="" ng-click="setView('/person')">Пользователи</a></li>
-                            <li><a sec:authorize="hasRole('ROLE_ADMIN')" href="" ng-click="setView('/edit')">Коммиссия</a></li>
+                            <li><a href="" ng-click="setView('/edit')">Аккаунт</a></li>
 
                         <li><a th:href="@{/logout}">Выйти</a></li>
                         <li role="separator" class="divider"></li>
@@ -92,7 +93,14 @@
 
 </nav>     <!--<ng-include ng-if = "true" src = "'/page'"></ng-include>-->
     <ng-view ></ng-view>
-        <!--<div sec:authorize="hasRole('ROLE_ADMIN')" ng-controller = "adminCtrl">-->
+
+<!--<ng-include ng-if = "true" src = "'/system'"></ng-include>-->
+<!--<ng-include ng-if = "true" src = "'partials/aas.html'"></ng-include>-->
+
+
+
+
+<!--<div sec:authorize="hasRole('ROLE_ADMIN')" ng-controller = "adminCtrl">-->
             <!--<ng-view ></ng-view>-->
         <!--</div>-->
 
@@ -103,19 +111,23 @@
 
 
 
-     <div sec:authorize="hasRole('ROLE_USER')">
-         This content is only shown to users.
-     </div>
-     <div sec:authorize="hasRole('ROLE_ADMIN')">
-         This content is only shown to users.
-     </div>
-     Logged user: <span sec:authentication="name">Bob</span>
-     Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-     <a th:href="@{/logout}">
-         <i class="fa fa-power-off"></i>
-         <span>Logout</span>
-     </a>
+     <!--<div sec:authorize="hasRole('ROLE_USER')">-->
+         <!--This content is only shown to users.-->
+     <!--</div>-->
+     <!--<div sec:authorize="hasRole('ROLE_ADMIN')">-->
+         <!--This content is only shown to users.-->
+     <!--</div>-->
+     <!--Logged user: <span sec:authentication="name">Bob</span>-->
+     <!--Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>-->
+     <!--<a th:href="@{/logout}">-->
+         <!--<i class="fa fa-power-off"></i>-->
+         <!--<span>Logout</span>-->
+     <!--</a>-->
      <script src = "../static/angularjs/dropdown.js" th:src = "@{/webjars/bootstrap/3.3.4/js/dropdown.js}"></script>
-
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>
 </body>
 </html>

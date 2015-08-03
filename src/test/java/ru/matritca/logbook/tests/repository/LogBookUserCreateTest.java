@@ -23,14 +23,14 @@ import ru.matritca.logbook.service.LogBookUserServiceImpl;
 @ActiveProfiles(profiles = {"test","user_details_security"})
 public class LogBookUserCreateTest {
 
-    @Autowired
-    private LogBookUserDetailsService logBookUserDetailsService;
-
-    @Test
-    public void testCreateLogBookUser() throws Exception {
-
-
-
-
-    }
+//    @Autowired
+//    private LogBookUserDetailsService logBookUserDetailsService;
+//
+//    @Test
+//    public void testCreateLogBookUser() throws Exception {
+//
+//
+//
+//
+//    }
 }

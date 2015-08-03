@@ -45,15 +45,19 @@ public class FXMLMainController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+
     @Autowired
     private TestRepository testRepository;
+    @Autowired
+    private FXMLAppController appController;
+    @Autowired
+    private Authentication authentication;
 
 
     @PostConstruct
     public void init(){
-//        Test test = new Test();
-//        test.setUser("Wasiliy");
-//        testRepository.save(test);
+
 
         Platform.runLater(new Runnable() {
             @Override
@@ -71,6 +75,8 @@ public class FXMLMainController {
                     authToken = authenticationManager.authenticate(authToken);
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                     loginLabel.setText("Auth OK");
+                    appController.startApp();
+                    stage.close();
                 } catch (AuthenticationException e) {
                    // System.out.println("Login failure, please try again:");
                   loginLabel.setText("Login failure, please try again:");
@@ -82,8 +88,6 @@ public class FXMLMainController {
         });
 
     }
-
-
 
 
 
