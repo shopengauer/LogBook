@@ -48,7 +48,7 @@ public class LogBookUser {
     @Basic(optional = false)
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "LOGBOOK_USER_ROLES", joinColumns = @JoinColumn(name = "LOGBOOK_USER_ROLE_ID"))
+    @CollectionTable(name = "LOGBOOK_USER_ROLES", schema = "USERS", joinColumns = @JoinColumn(name = "LOGBOOK_USER_ROLE_ID"))
     private List<LogBookUserRole> logBookUserRoles;
 
 

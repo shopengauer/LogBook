@@ -7,7 +7,7 @@ public enum LogBookUserRole {
 
     ADMIN_ROLE("ADMINISTRATOR",0),
     USER_EDITOR("EDITOR",1),
-    USER_VIWER("VIEWER",2);
+    USER_VIEWER("VIEWER",2);
 
     private String label;
     private int intValue;
@@ -45,7 +45,7 @@ public enum LogBookUserRole {
                 return s;
             }
         }
-        return USER_VIWER;
+        return USER_VIEWER;
     }
 
 }

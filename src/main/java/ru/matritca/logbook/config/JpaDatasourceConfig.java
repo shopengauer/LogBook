@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "ru.matritca.logbook.repository")
 @EnableTransactionManagement
-public class DatasourceConfig {
+public class JpaDatasourceConfig {
 
 //    @Bean
 //    public DataSource dataSource(){
@@ -35,7 +35,7 @@ public class DatasourceConfig {
     @Bean
     public DataSource dataSource(){
         BasicDataSource ds = new BasicDataSource();
-        ds.setUrl("jdbc:h2:file:C:\\Users\\Василий\\IdeaProjects\\LogBook\\h2data/h2logbook");
+        ds.setUrl("jdbc:h2:file:C:\\Users\\Василий\\IdeaProjects\\LogBook\\h2data/h2logbook2");
         //ds.setUrl("jdbc:h2:file:C:\\Users\\Василий\\IdeaProjects\\LogBook\\h2data/h2logbook");
         ds.setDriverClassName("org.h2.Driver");
       //  ds.setUsername("sa");
@@ -48,7 +48,7 @@ public class DatasourceConfig {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter =
                 new HibernateJpaVendorAdapter();
         hibernateJpaVendorAdapter.setDatabase(Database.H2);
-        hibernateJpaVendorAdapter.setGenerateDdl(false);
+        hibernateJpaVendorAdapter.setGenerateDdl(true);
         hibernateJpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.H2Dialect");
         return hibernateJpaVendorAdapter;
     }
